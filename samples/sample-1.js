@@ -8,6 +8,13 @@ class Human {
   };
 }
 
+class Male extends Human{
+  constructor(initialName) {
+    super();
+    this.name = initialName;
+  }
+}
+
 // Create a bob object that is a HUMAN MALE
 let bob = new Male('Bob');
 

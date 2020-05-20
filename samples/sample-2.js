@@ -17,5 +17,5 @@ class Square extends FourSided {
 }
 
 let mySquare = new Square(4);
-console.log(mySquare.name);
-console.log(mySquare.area());
+console.log(mySquare.name); // logs square
+console.log(mySquare.area()); // logs 16
