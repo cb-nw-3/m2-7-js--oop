@@ -43,17 +43,14 @@ class BookList {
   };
   startReading = (title) => {
     if (this.currentlyReading === null) {
-      this.currentlyReading = [
-        ...this.books.filter((elemet) => elemet.title === title),
-      ];
-      this.currentlyReading = [
-        this.books.filter((elemet) => elemet.title === title),
-      ][0];
-      //Why this does not spread the array ?????
+      // this.currentlyReading = [...(this.books.filter((elemet) => elemet.title === title))];
+      this.currentlyReading = this.books.filter(
+        (elemet) => elemet.title === title
+      )[0];
     }
   };
   finishReading = (title) => {
-    this.currentlyReading[0].isRead = true;
+    this.currentlyReading.isRead = true;
     this.lastRead = this.currentlyReading;
     this.currentlyReading = null;
   };
