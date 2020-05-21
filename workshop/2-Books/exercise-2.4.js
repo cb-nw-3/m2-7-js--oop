@@ -2,7 +2,7 @@
 // Copy over all of the code from 2.3...
 
 class Book {
-  constructor(title = "", genre = "", autor = "unknown", isRead = false) {
+  constructor(title = '', genre = '', autor = 'unknown', isRead = false) {
     this.title = title;
     this.genre = genre;
     this.autor = autor;
@@ -42,12 +42,18 @@ class BookList {
     return count;
   };
   startReading = (title) => {
-    this.currentlyReading = this.books.filter(
-      (elemet) => (elemet.title = title)
-    );
+    if (this.currentlyReading === null) {
+      this.currentlyReading = [
+        ...this.books.filter((elemet) => elemet.title === title),
+      ];
+      this.currentlyReading = [
+        this.books.filter((elemet) => elemet.title === title),
+      ][0];
+      //Why this does not spread the array ?????
+    }
   };
   finishReading = (title) => {
-    this.currentlyReading.isRead = true;
+    this.currentlyReading[0].isRead = true;
     this.lastRead = this.currentlyReading;
     this.currentlyReading = null;
   };
@@ -85,28 +91,28 @@ code runs well and produces the expected output.
 
 const homeLibrary = new BookList();
 
-homeLibrary.add(new Book("The Shining", "Horror", "Stephen King"));
-homeLibrary.add(new Book("American Gods", "Fiction", "Neil Gaiman"));
+homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
+homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
 homeLibrary.add(
-  new Book("Eloquent JavaScript", "Programming", "Marijn Haverbeke", true)
+  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
 );
-homeLibrary.add(new Book("The Eire Affair", "Fantasy", "Jasper Fforde"));
+homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
 homeLibrary.add(
-  new Book("The Revisionists", "Science-fiction", "thomas Mullen")
+  new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
 );
 
-console.log("initial state", homeLibrary.currentlyReading); // should be The Shining book object
-console.log("initial last-read", homeLibrary.lastRead); // should be null
+console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
+console.log('initial last-read', homeLibrary.lastRead); // should be null
 
-homeLibrary.finishReading("The Shining");
+homeLibrary.finishReading('The Shining');
 console.log(
-  "\n Currently reading, after finishing The Shining",
+  '\n Currently reading, after finishing The Shining',
   homeLibrary.currentlyReading
 ); // should be null
-console.log("Last-read, after finishing The Shining", homeLibrary.lastRead); // should be The Shining
+console.log('Last-read, after finishing The Shining', homeLibrary.lastRead); // should be The Shining
 
-homeLibrary.startReading("The Revisionists");
+homeLibrary.startReading('The Revisionists');
 console.log(
-  "Currentky reading, After starting The Revisionists",
+  'Currently reading, After starting The Revisionists',
   homeLibrary.currentlyReading
 ); // should be The Revisionists book
