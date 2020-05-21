@@ -2,6 +2,45 @@
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
 
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
+
+class BookList {
+  // Code here
+  constructor() {
+    this.BookList = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+  add = (book) => {
+    this.BookList.push(book);
+  };
+  getNumRead = () => {
+    let counter = 0;
+    this.BookList.forEach((book) => {
+      if (book.isRead) {
+        counter++;
+      }
+    });
+    return counter;
+  };
+  getNumUnread = () => {
+    let counter = 0;
+    this.BookList.forEach((book) => {
+      if (!book.isRead) {
+        counter++;
+      }
+    });
+    return counter;
+  };
+}
+
 // Exercise 2.3
 //
 // We want to be able to add books to our BookList, so that we can start a
@@ -24,12 +63,12 @@
 const homeLibrary = new BookList();
 
 // Books are unread by default:
-homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
-homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+homeLibrary.add(new Book("The Shining", "Horror", "Stephen King"));
+homeLibrary.add(new Book("American Gods", "Fiction", "Neil Gaiman"));
 
 // But, we can specify that we've read it:
 homeLibrary.add(
-  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
+  new Book("Eloquent JavaScript", "Programming", "Marijn Haverbeke", true)
 );
 
 // At this point, we should have 2 unread books, and 1 read book:
