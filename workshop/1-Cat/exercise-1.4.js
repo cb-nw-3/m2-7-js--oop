@@ -11,3 +11,23 @@
 //    It's up to you to decide how quickly these values should change.
 
 // B) Make Boots wait 20 minutes and call then console.log(boots);
+
+class Cat {
+    constructor(initialTimer) {
+        this.tiredness = 50;
+        this.hunger = 50;
+        this.loneliness = 50;
+        this.happiness = 50;
+        this.timer = initialTimer * 100;
+    }
+
+    // does this need an actual setInterval?
+    // I mean... why? Can't we just determine the number of iterations?
+
+    updateValues = (timer) => {
+        for (let i = 0; i < timer; i++) {
+
+        }
+    }
+
+}
