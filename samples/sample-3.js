@@ -8,9 +8,11 @@ class Student {
   };
 
   writeCode = () => {
-    learn();
+    this.learn();
   };
 }
 
 let bob = new Student();
 bob.writeCode();
+
+console.log(bob);
