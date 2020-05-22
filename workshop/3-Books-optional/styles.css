@@ -1,0 +1,121 @@
+html {
+  background-color: orange;
+  background-size: cover;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.registration-form {
+  margin-top: 50px;
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid black;
+  min-width: 50vw;
+  min-height: 35vh;
+  flex: 1;
+  border-radius: 4px;
+  box-shadow: 2px 2px 3px darkgray;
+}
+
+.text-field {
+  display: block;
+  width: 450px;
+}
+
+.checkMark {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 12px;
+  width: 12px;
+  background-color: #eee;
+  border-radius: 50%;
+  border: 1px solid dodgerblue;
+}
+
+.checkMark:hover {
+  background-color: darkgray;
+}
+
+.radio-label input:checked ~ .checkMark {
+  background-color: dodgerblue;
+}
+
+.checkMark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.radio-label input:checked ~ .checkMark:after {
+  display: block;
+}
+
+.radio-label .checkMark:after {
+  position: relative;
+  top: 3px;
+  left: 3px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+textarea {
+  height: 8em;
+  width: 100%;
+}
+
+.section {
+  margin-top: 1.5em;
+  min-width: 68vw;
+  text-align: left;
+}
+
+select {
+  border-radius: 5px;
+}
+
+textarea {
+  border-radius: 5px;
+  background-color: rgba(125, 125, 125, 0.1);
+}
+
+.form-button {
+  margin-top: 35px;
+  width: 140px;
+  height: 40px;
+  font-size: medium;
+  background-color: white;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.form-button:hover {
+  background-color: rgba(63, 147, 231, 1);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+input {
+  border-style: solid;
+  border-color: black;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: medium;
+}
