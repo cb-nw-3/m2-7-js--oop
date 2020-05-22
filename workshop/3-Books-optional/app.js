@@ -83,4 +83,5 @@ function submitBook(e) {
   // console.log(book);
   homeLibrary.books.push(book);
   refreshRows();
+  console.log(homeLibrary.books);
 }
