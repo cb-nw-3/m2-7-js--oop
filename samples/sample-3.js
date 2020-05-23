@@ -1,6 +1,6 @@
 class Student {
   constructor() {
-    this.excitement = 1;
+    this.excitement = 0;
   }
 
   learn = () => {
@@ -8,7 +8,7 @@ class Student {
   };
 
   writeCode = () => {
-    learn();
+    this.learn();
   };
 }
 

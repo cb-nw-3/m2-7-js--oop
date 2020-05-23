@@ -1,27 +1,67 @@
 // From 2.1. and 2.2
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
 
-// Exercise 2.3
-//
-// We want to be able to add books to our BookList, so that we can start a
-// collection!
-//
-// Let's create an `add` method in our BookList class. It should take a book
-// as a parameter. When we call `.add`, it should push that new book into the
-// `books` array on the `BookList` class.
-//
-// Books have an `isRead` property, to indicate if we've read it or not.
-// Let's also add two new methods:
-// - getNumRead
-// - getNumUnread
-//
-// These methods should return the number of books which are read and unread,
-// respectively.
-//
-// The following code will fail by default. Your goal is to get it to run, and output the values specified at the end:
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
 
-const homeLibrary = new BookList();
+  // Exercise 2.3
+  //
+  // We want to be able to add books to our BookList, so that we can start a
+  // collection!
+  //
+  // Let's create an `add` method in our BookList class. It should take a book
+  // as a parameter. When we call `.add`, it should push that new book into the
+  // `books` array on the `BookList` class.
+  //
+  // Books have an `isRead` property, to indicate if we've read it or not.
+  // Let's also add two new methods:
+  // - getNumRead
+  // - getNumUnread
+  //
+  // These methods should return the number of books which are read and unread,
+  // respectively.
+  //
+  // The following code will fail by default. Your goal is to get it to run, and output the values specified at the end:
+  add = (book) => {
+    this.books.push(book);
+  };
+
+  getNumUnread = () => {
+    let numUnread = 0;
+    this.books.forEach((book) => {
+      console.log(book);
+      if (book.isRead === false) {
+        numUnread = numUnread + 1;
+      }
+    });
+    return numUnread;
+  };
+
+  getNumRead = () => {
+    let numRead = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === true) {
+        numRead = numRead + 1;
+      }
+    });
+    return numRead;
+  };
+}
+
+let homeLibrary = new BookList();
 
 // Books are unread by default:
 homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));

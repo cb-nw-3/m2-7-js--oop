@@ -115,11 +115,11 @@ class City {
   }
 }
 let montreal = new City(30000, 'Montreal');
-let sanFransisco = new City(3, 'San Fransisco');
+let sanFrancisco = new City(3, 'San Fransisco');
 
 // What does the following output?
 console.log(montreal);
-console.log(sanFransisco);
+console.log(sanFrancisco);
 ```
 
 ---
@@ -128,6 +128,8 @@ console.log(sanFransisco);
 
 Every method arrow function of a class creates a function.
 Every instance of a class has a property that matches the method name and refers to the function.
+
+TD: Always use Arrow function for classes, as "this" is inherited from the class, but will overwirte itself if a regular function was used.
 
 ```js
 class Car {
@@ -227,7 +229,23 @@ myCar.drive();
 // 1. Given this class, how would we represent its hunger level?
 // 2. How could we represent varying hunger levels based on activity?
 // 3. How about when it eats?
-class Animal {}
+class Animal {
+  consctructor(initialHunger) {
+    this.hunger = initialHunger;
+  }
+  goForAWalk = () => {
+    this.hunger = =+10;
+  }
+  goToDogPark = () => {
+    this.hunger += 30;
+  }
+  haveASnack = () =>{
+    this.hunger += 20;
+  }
+}
+
+let spot = new Animal(50)
+console.log(spot.hunger); //50
 ```
 
 ---
@@ -239,3 +257,39 @@ What is the output of these programs?
 **See sample js files 1 to 6**
 
 ---
+
+Inheritance
+
+```js
+class Human {
+  constructor() {
+    this.species = ' Homo Sapiens';
+  }
+  dance = () => {
+    console.log('Disco time');
+  };
+}
+//Declare a class that extends Human
+
+class Male extends Human {
+  constructor(name) {
+    super(); //call parent constructor to set the species
+    this.name = name;
+  }
+  greet = () => {
+    console.log("I'm" + this.name);
+  };
+  dance = () => {
+    console.log('not really');
+  };
+}
+
+// Create a bob object that is a HUMAN MALE
+let bob = new Male('Bob');
+bob.greet();
+bob.dance(); //Should also work
+
+bob.species; //"Homo Sapiens"
+```
+
+If a male was created using the "Male" class, then it overwrites the method used from the parent class "Human".

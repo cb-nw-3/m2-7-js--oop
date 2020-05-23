@@ -9,9 +9,9 @@ class Human {
 }
 
 // Create a bob object that is a HUMAN MALE
-let bob = new Male('Bob');
+let bob = new Human('Bob');
 
 // Validation
 console.log('1. Species: ', bob.species);
-console.log('2. name: ', bob.name);
+console.log('2. name: ', bob.name); //Return undefined, as there is no name defined
 bob.dance();

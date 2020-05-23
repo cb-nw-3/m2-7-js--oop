@@ -14,3 +14,5 @@ class Dog {
 
 let fido = new Dog();
 fido.run();
+
+//Does not work since function "eat" is not defined.
