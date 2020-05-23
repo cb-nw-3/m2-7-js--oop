@@ -9,3 +9,14 @@
 // and confirm that you have everything in there.
 
 // By the way, Boots is a Simaese cat...
+
+class Cat {
+    constructor(initialName, initialBreed) {
+        this.name = initialName;
+        this.breed = initialBreed;
+    }
+}
+
+let boots = new Cat("Boots", "Siamese");
+
+console.log(boots);
