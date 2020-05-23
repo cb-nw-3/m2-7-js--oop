@@ -9,6 +9,27 @@
 
 // Console.log(homeLibrary) to verify that all is working.
 
-class BookList {
-  // Code here
+class Book {
+
+  constructor  (initTitle, initGenre, initAuthor, initIsRead = false) {
+      this.title = initTitle;
+      this.genre = initGenre;
+      this.author = initAuthor;
+      this.isRead = initIsRead;
+  }
+
 }
+
+
+
+class BookList {
+    constructor () {
+      this.books = [Book];
+      this.lastRead = null;
+      this.currentlyReading = null;
+    }
+}
+
+
+let homeLibrary = new BookList();
+console.log(homeLibrary);

@@ -31,6 +31,78 @@ Your goal is to add the methods and behaviour necessary so that the following
 code runs well and produces the expected output.
 */
 
+class Book {
+
+  constructor  (initTitle, initGenre, initAuthor, initIsRead = false) {
+      this.title = initTitle;
+      this.genre = initGenre;
+      this.author = initAuthor;
+      this.isRead = initIsRead;
+  }
+
+}
+
+
+
+class BookList {
+    constructor () {
+      this.books = [Book];
+      this.lastRead = null;
+      this.currentlyReading = null;
+    }
+
+    add = (book) =>  {
+      if (this.books.length === 0) 
+      {
+        this.currentlyReading = book.title;   
+      }
+      this.books.push(book)
+    }
+    getNumUnread = () => {
+      let unreadBooks = 0;
+      this.books.forEach( (indivBook) => {
+        if (indivBook.isRead === false)  { unreadBooks += 1;  }
+        }
+      );
+      return unreadBooks;
+    }
+    getNumRead = () => {
+      let readBooks = 0;
+      this.books.forEach( (indivBook) => {
+        if (indivBook.isRead === true)  { readBooks += 1;  }
+        }
+      );
+      return readBooks;
+    }
+
+    getAllBooksRead = () => {
+      let allBooksRead = this.books.filter((book) => book.isRead === true);
+      return allBooksRead;
+
+    }
+
+    startReading = (titleToFind) => {
+      let booksWithTitle = this.books.filter((book) => book.title === titleToFind);
+      this.currentlyReading = booksWithTitle[0].title
+    }
+
+    finishReading = (titleToFind) => {
+      let booksWithTitle = this.books.filter((book) => book.title === titleToFind);
+
+      if (this.currentlyReading === titleToFind) {
+        this.currentlyReading = null;
+      }
+      this.lastRead = titleToFind;
+
+      booksWithTitle[0].isRead = true; // question <---- why does this work??  Aren't I making a new array with filter?
+
+    }
+
+    
+}
+
+
+
 const homeLibrary = new BookList();
 
 homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
@@ -43,10 +115,19 @@ homeLibrary.add(
   new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
 );
 
+console.log(homeLibrary.getAllBooksRead());
+
+homeLibrary.startReading('The Revisionists');
 console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
 console.log('initial last-read', homeLibrary.lastRead); // should be null
 
+
+
+
 homeLibrary.finishReading('The Shining');
+
+
+
 console.log(
   'Currently reading, after finishing The Shining',
   homeLibrary.currentlyReading
@@ -58,3 +139,6 @@ console.log(
   'Currentky reading, After starting The Revisionists',
   homeLibrary.currentlyReading
 ); // should be The Revisionists book
+
+
+console.log(homeLibrary.getAllBooksRead());
