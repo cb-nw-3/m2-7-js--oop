@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+  <head>
+    <title>CB-NW-3 Workshop 10 - Exercise 3</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="left-part">
+      <div class="current-status">
+        <div class="current-book">
+          <h2>Current book</h2>
+          <p id="currentBook">No book</p>
+          <div class="buttons">
+            <button id="bookStart">Book start</button>
+            <button id="bookOver">Book over</button>
+          </div>
+        </div>
+
+        <div class="last-book">
+          <h2>Last book</h2>
+          <p id="lastBook">No book</p>
+        </div>
+      </div>
+
+      <div class="form">
+        <h2>Enter a book</h2>
+          <input id="bookTitle" type="text" placeholder="Book title" required>
+          <input id="bookAuthor" type="text" placeholder="Book author" required>
+          <input id="bookGenre" type="text" placeholder="Book genre">
+          <label>
+            <input id="readStatus" type="checkbox">
+            Read
+          </label>
+          <button id="submitButton">New Book</button>
+      </div>
+    </div>
+
+    <div class="library">
+      <h2>Library</h2>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
