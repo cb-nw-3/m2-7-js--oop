@@ -139,7 +139,8 @@ Every instance of a class has a property that matches the method name and refers
 
 ```js
 class Car {
-  noise = () => console.log("Vrooom");
+  constructor() {}
+  noise = () => console.log("Vrooom"); // method -> same as functions
 }
 
 let mazda = new Car();
@@ -182,7 +183,7 @@ class Dog {
   };
 }
 
-let mastiff = new Dog();
+let mastiff = new Dog(); //give parameter to have acces to voice
 let terrier = new Dog();
 ```
 
