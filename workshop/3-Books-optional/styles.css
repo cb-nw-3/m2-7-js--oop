@@ -1,7 +1,7 @@
 html {
   background-color: orange;
   background-size: cover;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   font-size: 10px;
 }
@@ -56,7 +56,7 @@ body {
 }
 
 .checkMark:after {
-  content: '';
+  content: "";
   position: absolute;
   display: none;
 }
@@ -118,4 +118,15 @@ input {
   padding: 8px;
   border-radius: 6px;
   font-size: medium;
+}
+
+table {
+  margin-top: 15px;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 6px;
+}
+
+td {
+  border: 1px solid gray;
 }
