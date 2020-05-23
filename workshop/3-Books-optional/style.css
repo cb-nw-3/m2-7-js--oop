@@ -166,8 +166,8 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
-.libraryTitle, .libraryAuthor {
-  width: 165px;
+.libraryTitle, .libraryAuthor, .libraryGenre {
+  width: 25%;
   height: 30px;
 }
 .libraryRead {

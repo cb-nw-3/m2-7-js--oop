@@ -10,6 +10,7 @@ let startBookBtn = document.querySelector('#bookStart');
 let overBookBtn = document.querySelector('#bookOver');
 let libraryTitleOutput = document.querySelector('.libraryTitle');
 let libraryAuthorOutput = document.querySelector('.libraryAuthor');
+let libraryGenreOutput = document.querySelector('.libraryGenre');
 let libraryStatusOutput = document.querySelector('.libraryRead');
 
 let inputBookTitle;
@@ -93,9 +94,9 @@ function updateLibrary() {
   inputBookGenre = bookGenre.value;
 
   if (readStatus.checked) {
-    inputReadStatus = ':check:';
+    inputReadStatus = '✔️';
   } else {
-    inputReadStatus = ':X:';
+    inputReadStatus = '❌';
   }
 
   if (!verifyIfBookAlreadyExist(inputBookTitle) && inputBookTitle !== '') {
@@ -121,6 +122,15 @@ function updateLibrary() {
     libraryAuthor.classList.add('libraryBooks');
     libraryAuthor.classList.add(`${library.books.length}`);
     libraryAuthorOutput.appendChild(libraryAuthor);
+
+    libraryGenre = document.createElement('div');
+    if (bookGenre.value === '') {
+      inputBookGenre = 'Unknown';
+    }
+    libraryGenre.innerText = `${inputBookGenre}`;
+    libraryGenre.classList.add('libraryBooks');
+    libraryGenre.classList.add(`${library.books.length}`);
+    libraryGenreOutput.appendChild(libraryGenre);
 
     libraryStatus = document.createElement('div');
     libraryStatus.innerText = `${inputReadStatus}`;
@@ -171,12 +181,12 @@ function updateLastBook() {
       titleFound = element;
     }
 
-    if (titleFound.className === element.className && element.innerText === ':X:') {
+    if (titleFound.className === element.className && element.innerText === '❌') {
       statusFound = element;
     }
   })
   
-  statusFound.innerText = ':check:'
+  statusFound.innerText = '✔️'
 
   overBookBtn.removeEventListener('click', updateLastBook)
   startBookBtn.addEventListener('click', updateCurrentBook)
