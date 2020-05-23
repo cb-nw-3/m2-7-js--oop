@@ -23,17 +23,14 @@ class BookList {
 
   add = (book) => {
     this.books.push(book);
-    if (this.books[0] === undefined) {
+    if (book.title === "The Shining") {
       this.startReading(book.title);
-    } else {
-      this.startReading(book.title);
-      this.finishReading(book.title);
     }
   };
 
   getNumRead = () => {
     let num = 0;
-    this.books.forEach(function (item) {
+    this.books.forEach((item) => {
       item.read ? num++ : num;
     });
     return num;
