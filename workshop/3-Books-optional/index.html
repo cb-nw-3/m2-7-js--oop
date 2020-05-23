@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your Home Library</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Etienne Giroux" />
+    <meta name="description" content="Home Library" />
+    <meta property="og:title" content="Your Home Library" />
+    <meta property="og:description" content="It's your personal Library" />
+    <link href="style.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Your home libary!</h1>
+    <section class="read-activity title">
+      Reading Activity
+      <div class="read-lastread">
+        <div class="currently-reading">Currently Reading</div>
+        <div class="last-read">Last Read</div>
+      </div>
+    </section>
+    <section class="bookShelf title" id="_bookshelf">
+      Your Book Collection
+      <button class="addBook">Add Book</button>
+      <div class="bookRow"></div>
+    </section>
+    <section class="addBookForm">
+      <form id="bookForm">
+        <h1>Add Book</h1>
+        <section class="information-input">
+          <div class="input-pair">
+            <label>Title</label>
+            <input type="text" required class="text-field" id="bookTitle" />
+          </div>
+          <div class="input-pair">
+            <label>Author</label>
+            <input type="text" required class="text-field" id="bookAuthor" />
+          </div>
+          <div class="input-pair">
+            <label>Genre</label>
+            <input type="text" required class="text-field" id="bookGenre" />
+          </div>
+        </section>
+
+        <section class="terms">
+          <label class="checkbox-label">
+            <input type="checkbox" id="read-checkbox" /> I have already read
+            this book
+          </label>
+        </section>
+        <section class="errorSection"></section>
+        <section class="btn-section">
+          <button class="clear button" type="button">Clear</button>
+          <button class="submit button" id="submitBtn" type="submit">
+            Submit
+          </button>
+        </section>
+      </form>
+    </section>
+    <script src="app.js"></script>
+    <script src="form.js"></script>
+  </body>
+</html>
