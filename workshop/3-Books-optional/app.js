@@ -77,8 +77,6 @@ class BookList {
 const library = new BookList();
 
 submitBtn.addEventListener('click', updateLibrary)
-startBookBtn.addEventListener('click', updateCurrentBook)
-overBookBtn.addEventListener('click', updateLastBook)
 
 function updateLibrary() {
   inputBookTitle = bookTitle.value;
@@ -89,19 +87,13 @@ function updateLibrary() {
   } else {
     inputReadStatus = ':X:';
   }
-  if (!verifyIfBookAlreadyExist(inputBookTitle)) {
+  if (!verifyIfBookAlreadyExist(inputBookTitle) && inputBookTitle !== '') {
     if (readStatus.checked) {
       library.add(new Book(inputBookTitle, inputBookAuthor, inputBookGenre, true));
     } else {
       library.add(new Book(inputBookTitle, inputBookAuthor, inputBookGenre));
     }
 
-    if (library.currentlyReading) {
-      updateCurrentBook();
-    }
-    if (library.lastRead) {
-      updateLastBook();
-    }
 
     libraryDiv = document.createElement('div');
     if (!inputBookAuthor) {
@@ -110,6 +102,19 @@ function updateLibrary() {
       libraryDiv.innerText = `${bookTitle.value} by ${bookAuthor.value} - ${inputReadStatus}`;
     }
     libraryOutput.appendChild(libraryDiv);
+
+    // if (!library.currentlyReading) {
+      updateCurrentBook();
+    // }
+    // if (library.lastRead) {
+    //   updateLastBook();
+    // }
+
+
+
+    startBookBtn.addEventListener('click', updateCurrentBook)
+    overBookBtn.addEventListener('click', updateLastBook)
+
   }
 }
 
@@ -121,16 +126,19 @@ function updateCurrentBook() {
   if (nextBook !== undefined) {
     library.startReading(nextBook.title);
     currentBook.innerText = library.currentlyReading.title;
-  
   }
-  startBookBtn.removeEventListener('click', updateCurrentBook)
+
+    startBookBtn.removeEventListener('click', updateCurrentBook)
   overBookBtn.addEventListener('click', updateLastBook)
 
+  if (library.currentlyReading === null) {
+    overBookBtn.removeEventListener('click', updateLastBook)
+  }
 }
 
 function updateLastBook() {
   library.finishReading(library.currentlyReading.title);
-  currentBook.innerText = "No book";
+  currentBook.innerText = "Current Book";
   lastBook.innerText = library.lastRead.title;
 
   overBookBtn.removeEventListener('click', updateLastBook)
