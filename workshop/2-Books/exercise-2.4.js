@@ -1,6 +1,61 @@
 // From 2.3
 // Copy over all of the code from 2.3...
 
+class Book {
+  constructor(title = '', genre = '', autor = 'unknown', isRead = false) {
+    this.title = title;
+    this.genre = genre;
+    this.autor = autor;
+    this.isRead = isRead;
+  }
+}
+
+class BookList {
+  // Code here
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+  add = (book) => {
+    this.books.push(book);
+    if (this.currentlyReading == null) {
+      this.startReading(book.title);
+    }
+  };
+  getNumRead = () => {
+    let count = 0;
+    this.books.forEach((elemet) => {
+      if (elemet.isRead) {
+        count++;
+      }
+    });
+    return count;
+  };
+  getNumUnread = () => {
+    let count = 0;
+    this.books.forEach((elemet) => {
+      if (!elemet.isRead) {
+        count++;
+      }
+    });
+    return count;
+  };
+  startReading = (title) => {
+    if (this.currentlyReading === null) {
+      // this.currentlyReading = [...(this.books.filter((elemet) => elemet.title === title))];
+      [this.currentlyReading] = this.books.filter(
+        (elemet) => elemet.title === title
+      );
+    }
+  };
+  finishReading = (title) => {
+    this.currentlyReading.isRead = true;
+    this.lastRead = this.currentlyReading;
+    this.currentlyReading = null;
+  };
+}
+
 // Exercise 2.4
 /*
 
@@ -48,13 +103,13 @@ console.log('initial last-read', homeLibrary.lastRead); // should be null
 
 homeLibrary.finishReading('The Shining');
 console.log(
-  'Currently reading, after finishing The Shining',
+  '\n Currently reading, after finishing The Shining',
   homeLibrary.currentlyReading
 ); // should be null
 console.log('Last-read, after finishing The Shining', homeLibrary.lastRead); // should be The Shining
 
 homeLibrary.startReading('The Revisionists');
 console.log(
-  'Currentky reading, After starting The Revisionists',
+  'Currently reading, After starting The Revisionists',
   homeLibrary.currentlyReading
 ); // should be The Revisionists book

@@ -22,3 +22,104 @@
 // You decide how much sleep, eat, and play affects your cat's happiness.
 
 // B) call the different methods with appropriate values and then console.log boots to see what happened to the property values.
+
+class Cat {
+  // Add code here
+  constructor(name, breed) {
+    this.name = name;
+    this.breed = breed;
+    this.species = "cat";
+    this.tiredness = 0;
+    this.hunger = 0;
+    this.loneliness = 0;
+    /*Above parameters 0 = none => good*/
+
+    this.happiness = 0;
+    /* happiness level goes from 0 to 100
+  0 sadness cat in the world
+  100 happiest cat in the world or more
+  */
+  }
+  sleep = (hours) => {
+    this.tiredness -= hours * 5;
+    this.happiness += 50 - this.tiredness;
+  };
+  eat = (numberOfKibbles) => {
+    this.hunger -= numberOfKibbles / 5;
+    this.happiness += 50 - this.hunger;
+  };
+  play = (minutes) => {
+    this.loneliness -= minutes * 3;
+    this.happiness += 30 - this.loneliness;
+  };
+}
+
+let boots = new Cat("Tom", "Simaese");
+
+console.log(boots);
+
+// Cat {
+//   sleep: [Function: sleep],
+//   eat: [Function: eat],
+//   play: [Function: play],
+//   name: 'Tom',
+//   breed: 'Simaese',
+//   species: 'cat',
+//   tiredness: 0,
+//   hunger: 0,
+//   loneliness: 0,
+//   happiness: 0
+// }
+
+boots.hunger = 50; // getting hungry
+boots.loneliness = 15; // getting lonely
+boots.tiredness = 20; // getting tired
+
+boots.sleep(2);
+console.log(boots);
+
+// Cat {
+//   sleep: [Function: sleep],
+//   eat: [Function: eat],
+//   play: [Function: play],
+//   name: 'Tom',
+//   breed: 'Simaese',
+//   species: 'cat',
+//   tiredness: 10,
+//   hunger: 50,
+//   loneliness: 15,
+//   happiness: 40
+// }
+
+boots.eat(180);
+
+console.log(boots);
+// Cat {
+//   sleep: [Function: sleep],
+//   eat: [Function: eat],
+//   play: [Function: play],
+//   name: 'Tom',
+//   breed: 'Simaese',
+//   species: 'cat',
+//   tiredness: 10,
+//   hunger: 14,
+//   loneliness: 15,
+//   happiness: 76
+// }
+
+boots.play(2);
+
+console.log(boots);
+
+// Cat {
+//   sleep: [Function: sleep],
+//   eat: [Function: eat],
+//   play: [Function: play],
+//   name: 'Tom',
+//   breed: 'Simaese',
+//   species: 'cat',
+//   tiredness: 10,
+//   hunger: 14,
+//   loneliness: 9,
+//   happiness: 97
+// }
