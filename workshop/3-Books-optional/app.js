@@ -21,6 +21,7 @@ let libraryTitle;
 let libraryAuthor;
 let librayrStatus;
 let nextBook;
+let libraryBookList;
 
 class Book {
   constructor(bookTitle, bookGenre, bookAuthor, isRead = false) {
@@ -84,10 +85,8 @@ const library = new BookList();
 submitBtn.addEventListener('click', updateLibrary)
 
 function updateLibrary() {
-    startBookBtn.addEventListener('click', updateCurrentBook)
-    overBookBtn.addEventListener('click', updateLastBook)
-
-
+  startBookBtn.addEventListener('click', updateCurrentBook)
+  overBookBtn.addEventListener('click', updateLastBook)
 
   inputBookTitle = bookTitle.value;
   inputBookAuthor = bookAuthor.value;
@@ -111,6 +110,7 @@ function updateLibrary() {
     libraryTitle = document.createElement('div');
     libraryTitle.innerText = `${bookTitle.value}`;
     libraryTitle.classList.add('libraryBooks');
+    libraryTitle.classList.add(`${library.books.length}`);
     libraryTitleOutput.appendChild(libraryTitle);
 
     libraryAuthor = document.createElement('div');
@@ -119,21 +119,17 @@ function updateLibrary() {
     }
     libraryAuthor.innerText = `${inputBookAuthor}`;
     libraryAuthor.classList.add('libraryBooks');
+    libraryAuthor.classList.add(`${library.books.length}`);
     libraryAuthorOutput.appendChild(libraryAuthor);
 
     libraryStatus = document.createElement('div');
     libraryStatus.innerText = `${inputReadStatus}`;
     libraryStatus.classList.add('libraryBooks');
+    libraryStatus.classList.add(`${library.books.length}`);
     libraryStatus.style.textAlign = 'center';
     libraryStatusOutput.appendChild(libraryStatus);
 
-    // if (!library.currentlyReading) {
-      updateCurrentBook();
-    // }
-    // if (library.lastRead) {
-    //   updateLastBook();
-    // }
-
+    updateCurrentBook();
   }
 }
 
@@ -160,6 +156,27 @@ function updateLastBook() {
 
   currentBook.innerText = "Current Book";
   lastBook.innerText = library.lastRead.title;
+
+  libraryBookList = document.querySelectorAll('.libraryBooks');
+  let titleSearch = library.lastRead.title;
+  let titleFound = document.querySelector('.libraryBooks');
+  let statusFound;
+
+  console.log(libraryBookList)
+  console.log(library.lastRead.title)
+  
+  libraryBookList.forEach(element => {
+    console.log(element.textContent, titleSearch)
+    if (element.textContent === titleSearch) {
+      titleFound = element;
+    }
+
+    if (titleFound.className === element.className && element.innerText === ':X:') {
+      statusFound = element;
+    }
+  })
+  
+  statusFound.innerText = ':check:'
 
   overBookBtn.removeEventListener('click', updateLastBook)
   startBookBtn.addEventListener('click', updateCurrentBook)
