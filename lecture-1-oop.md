@@ -227,7 +227,29 @@ myCar.drive();
 // 1. Given this class, how would we represent its hunger level?
 // 2. How could we represent varying hunger levels based on activity?
 // 3. How about when it eats?
-class Animal {}
+class Animal {
+  constructor(initialHunger) {
+    this.hunger = initialHunger;
+  }
+  hungerLevel = () => {
+    if (this.hunger === 0) {
+      return 'not hungry'
+    } else if (this.hunger === 50) {
+      return 'hungry'
+    } else if (this.hunger === 100) {
+      return 'starving'
+    } else {
+      return 'undefined'
+    }
+  }
+  walk = () => {
+    this.hunger += 20
+  }
+  eat = () => {
+    this.hunger -= 20;
+  }
+}
+let spot = new Animal(50);
 ```
 
 ---

@@ -9,4 +9,4 @@ class Dog {
 }
 
 let fido = new Dog();
-fido.remaining();
+fido.remaining(); // food needs to be a property defined in the constructor

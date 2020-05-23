@@ -9,4 +9,4 @@ class Student {
 }
 
 let bob = new Student();
-bob.writeCode();
+bob.writeCode(); // undefined function, learn() is not initialized

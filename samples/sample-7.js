@@ -20,6 +20,7 @@ class Fridge {
 
 let myFridge = new Fridge();
 
+// add these elements to the contents array with the class method addItem
 myFridge.addItem({
   name: 'milk',
   calories: 700,

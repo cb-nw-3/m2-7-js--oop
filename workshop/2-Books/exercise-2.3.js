@@ -2,6 +2,44 @@
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
 
+class Book {
+  constructor(bookTitle, bookGenre, bookAuthor, isRead = false) {
+    this.title = bookTitle;
+    this.genre = bookGenre;
+    this.author = bookAuthor;
+    this.isRead = isRead;
+  }
+}
+
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+  add(book) {
+    this.books.push(book);
+  }
+  getNumRead() {
+    let amount = 0;
+    this.books.forEach(element => {
+      if (element.isRead) {
+        amount++;
+      }
+    })
+    return amount
+  }
+  getNumUnread() {
+    let amount = 0;
+    this.books.forEach(element => {
+      if (!element.isRead) {
+        amount++;
+      }
+    })
+    return amount
+  }
+}
+
 // Exercise 2.3
 //
 // We want to be able to add books to our BookList, so that we can start a
@@ -36,3 +74,4 @@ homeLibrary.add(
 // At this point, we should have 2 unread books, and 1 read book:
 console.log(homeLibrary.getNumUnread()); // 2
 console.log(homeLibrary.getNumRead()); // 1
+console.log(homeLibrary);

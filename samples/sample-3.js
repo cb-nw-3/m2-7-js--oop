@@ -13,4 +13,4 @@ class Student {
 }
 
 let bob = new Student();
-bob.writeCode();
+bob.writeCode(); // undefined function because of scope
