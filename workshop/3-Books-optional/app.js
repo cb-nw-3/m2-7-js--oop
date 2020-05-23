@@ -148,6 +148,11 @@ function updateLibrary() {
     libraryStatusOutput.appendChild(libraryStatus);
     // function call that shows us current book
     updateCurrentBook();
+    // empty input fields
+    bookTitle.value = '';
+    bookAuthor.value = '';
+    bookGenre.value = '';
+    readStatus.checked = false;
   }
 }
 
