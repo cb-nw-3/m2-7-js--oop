@@ -2,6 +2,59 @@
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
 
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
+
+class BookList {
+  constructor() {
+    this.books = [];
+    this.currentlyReading = null;
+    this.lastRead = null;
+  }
+// Let's create an `add` method in our BookList class. It should take a book
+// as a parameter. When we call `.add`, it should push that new book into the
+// `books` array on the `BookList` class.
+  add = (book) => {
+    this.books.push(book);
+  };
+
+// Let's also add two new methods:
+// - getNumRead
+// - getNumUnread
+// These methods should return the number of books which are read and unread,
+// respectively.
+
+  getNumRead = () => {
+    let numRead = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === true) {
+        numRead++;
+      }
+    });
+
+    return numRead;
+  };
+  getNumUnread = () => {
+    let numUnread = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === false) {
+        numUnread++;
+      }
+    });
+
+    return numUnread;
+  };
+
+
+
+}
+
 // Exercise 2.3
 //
 // We want to be able to add books to our BookList, so that we can start a
@@ -10,6 +63,7 @@
 // Let's create an `add` method in our BookList class. It should take a book
 // as a parameter. When we call `.add`, it should push that new book into the
 // `books` array on the `BookList` class.
+
 //
 // Books have an `isRead` property, to indicate if we've read it or not.
 // Let's also add two new methods:
