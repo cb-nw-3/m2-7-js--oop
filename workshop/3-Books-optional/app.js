@@ -86,12 +86,11 @@ function refreshTable(table, data) {
   for (let element of data) {
     // console.log(data);
     // console.log(element);
-    let row = TBODY.insertRow();
+    const ROW = TBODY.insertRow();
     for (key in element) {
-      console.log(element);
-      let cell = row.insertCell();
-      let text = document.createTextNode(element[key]);
-      cell.appendChild(text);
+      // console.log(element);
+      const CELL = ROW.insertCell();
+      CELL.innerText = element[key];
     }
   }
 }
