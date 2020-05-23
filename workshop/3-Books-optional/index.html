@@ -26,7 +26,7 @@
       <div class="form">
         <h2>Enter a book</h2>
           <div class="inputs">
-            <input id="bookTitle" type="text" placeholder="Book title" required>
+            <input id="bookTitle" type="text" placeholder="Book title" minlength="1" maxlength="38" required>
             <input id="bookAuthor" type="text" placeholder="Book author" required>
             <input id="bookGenre" type="text" placeholder="Book genre">
             <label class="readStatus">
@@ -40,6 +40,17 @@
 
     <div class="library">
       <h2>Library</h2>
+      <div class="librarySections">
+        <div class="libraryTitle">
+          <h3>Title</h3>
+        </div>
+        <div class="libraryAuthor">
+          <h3>Author</h3>
+        </div>
+        <div class="libraryRead">
+          <h3>Status</h3>
+        </div>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
