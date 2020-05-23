@@ -88,6 +88,7 @@ class BookList {
 
     finishReading = (titleToFind) => {
       let booksWithTitle = this.books.filter((book) => book.title === titleToFind);
+      console.log("Getting books here:  ", this.books)
 
       if (this.currentlyReading === titleToFind) {
         this.currentlyReading = null;
@@ -115,7 +116,7 @@ homeLibrary.add(
   new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
 );
 
-console.log(homeLibrary.getAllBooksRead());
+// console.log(homeLibrary.getAllBooksRead());
 
 homeLibrary.startReading('The Revisionists');
 console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
@@ -141,4 +142,4 @@ console.log(
 ); // should be The Revisionists book
 
 
-console.log(homeLibrary.getAllBooksRead());
+// console.log(homeLibrary.getAllBooksRead());
