@@ -1,5 +1,5 @@
 class Book {
-  constructor(title = '', genre = '', autor = 'unknown', isRead = false) {
+  constructor(title = "", genre = "", autor = "unknown", isRead = false) {
     this.title = title;
     this.genre = genre;
     this.autor = autor;
@@ -56,32 +56,55 @@ class BookList {
 
 const homeLibrary = new BookList();
 
-homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
-homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+homeLibrary.add(new Book("The Shining", "Horror", "Stephen King"));
+homeLibrary.add(new Book("American Gods", "Fiction", "Neil Gaiman"));
 homeLibrary.add(
-  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
+  new Book("Eloquent JavaScript", "Programming", "Marijn Haverbeke", true)
 );
-homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
+homeLibrary.add(new Book("The Eire Affair", "Fantasy", "Jasper Fforde"));
 homeLibrary.add(
-  new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
+  new Book("The Revisionists", "Science-fiction", "thomas Mullen")
 );
 
-const BTNSUBMIT = document.querySelector('button');
-BTNSUBMIT.addEventListener('click', submitBook);
+const BTNSUBMIT = document.querySelector("button");
+BTNSUBMIT.addEventListener("click", submitBook);
 // console.log(BTNSUBMIT);
 
-function refreshRows() {}
+const TABLE = document.querySelector("table");
+
+function refreshTable(table, data) {
+  const THEAD = table.createTHead();
+  const ROW = THEAD.insertRow();
+  for (let key in data[0]) {
+    const TH = document.createElement("th");
+    TH.innerText = key;
+    ROW.appendChild(TH);
+  }
+  const TBODY = document.createElement("tbody");
+  table.appendChild(TBODY);
+
+  for (let element of data) {
+    // console.log(data);
+    // console.log(element);
+    let row = TBODY.insertRow();
+    for (key in element) {
+      console.log(element);
+      let cell = row.insertCell();
+      let text = document.createTextNode(element[key]);
+      cell.appendChild(text);
+    }
+  }
+}
 
 function submitBook(e) {
   e.preventDefault();
   const book = new Book();
-  const INPUTS = document.querySelectorAll('input');
+  const INPUTS = document.querySelectorAll("input");
   book.title = INPUTS[0].value;
   book.genre = INPUTS[1].value;
   book.autor = INPUTS[2].value;
   book.isRead = INPUTS[3].checked;
   // console.log(book);
   homeLibrary.books.push(book);
-  refreshRows();
-  console.log(homeLibrary.books);
+  refreshTable(TABLE, homeLibrary.books);
 }
