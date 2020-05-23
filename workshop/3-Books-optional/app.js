@@ -99,6 +99,7 @@ function submitBook(e) {
   e.preventDefault();
   const book = new Book();
   const INPUTS = document.querySelectorAll("input");
+  TABLE.style.display = "block";
   book.title = INPUTS[0].value;
   book.genre = INPUTS[1].value;
   book.autor = INPUTS[2].value;
