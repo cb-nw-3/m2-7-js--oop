@@ -9,3 +9,29 @@
 // and confirm that you have everything in there.
 
 // By the way, Boots is a Simaese cat...
+
+class Cat {
+  constructor(name, breed, species, tiredness, hunger, loneliness, happiness) {
+    this.name = name;
+    this.breed = breed;
+    this.species = species;
+    this.tiredness = tiredness;
+    this.hunger = hunger;
+    this.loneliness = loneliness;
+    this.happiness = happiness;
+  }
+}
+
+let boots = new Cat("shadow", "Simaese", "cat", 0, 0, 0, 0);
+console.log(boots);
+console.log("species: ", boots.species);
+
+// Cat {
+//     name: 'shadow',
+//     breed: 'Simaese',
+//     species: 'cat',
+//     tiredness: 0,
+//     hunger: 0,
+//     loneliness: 0,
+//     happiness: 0
+//   }

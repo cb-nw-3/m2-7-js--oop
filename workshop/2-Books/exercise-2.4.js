@@ -1,5 +1,65 @@
 // From 2.3
 // Copy over all of the code from 2.3...
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead === true ? true : false;
+  }
+}
+
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+  add = (book) => {
+    if (this.books.length === 0) {
+      this.currentlyReading = book;
+    }
+    this.books.push(book);
+  };
+  getNumRead = () => {
+    let counter = 0;
+    this.books.forEach(function (item) {
+      if (item.isRead === true) {
+        counter += 1;
+      }
+    });
+    return counter;
+  };
+  getNumUnread = () => {
+    let counter = 0;
+    this.books.forEach(function (item) {
+      if (item.isRead === false) {
+        counter += 1;
+      }
+    });
+    return counter;
+  };
+  startReading = (bookTitle) => {
+    let currentRead = {};
+    this.books.forEach(function (item) {
+      if (item.title === bookTitle) {
+        currentRead = item;
+      }
+    });
+    this.currentlyReading = currentRead;
+  };
+
+  finishReading = (bookTitle) => {
+    let finishBook = {};
+    this.books.forEach(function (item) {
+      if (item.title === bookTitle) {
+        finishBook = item;
+      }
+    });
+    this.lastRead = finishBook;
+    this.currentlyReading = null;
+  };
+}
 
 // Exercise 2.4
 /*
@@ -33,28 +93,28 @@ code runs well and produces the expected output.
 
 const homeLibrary = new BookList();
 
-homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
-homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+homeLibrary.add(new Book("The Shining", "Horror", "Stephen King"));
+homeLibrary.add(new Book("American Gods", "Fiction", "Neil Gaiman"));
 homeLibrary.add(
-  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
+  new Book("Eloquent JavaScript", "Programming", "Marijn Haverbeke", true)
 );
-homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
+homeLibrary.add(new Book("The Eire Affair", "Fantasy", "Jasper Fforde"));
 homeLibrary.add(
-  new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
+  new Book("The Revisionists", "Science-fiction", "thomas Mullen")
 );
 
-console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
-console.log('initial last-read', homeLibrary.lastRead); // should be null
+console.log("initial state", homeLibrary.currentlyReading); // should be The Shining book object
+console.log("initial last-read", homeLibrary.lastRead); // should be null
 
-homeLibrary.finishReading('The Shining');
+homeLibrary.finishReading("The Shining");
 console.log(
-  'Currently reading, after finishing The Shining',
+  "Currently reading, after finishing The Shining",
   homeLibrary.currentlyReading
 ); // should be null
-console.log('Last-read, after finishing The Shining', homeLibrary.lastRead); // should be The Shining
+console.log("Last-read, after finishing The Shining", homeLibrary.lastRead); // should be The Shining
 
-homeLibrary.startReading('The Revisionists');
+homeLibrary.startReading("The Revisionists");
 console.log(
-  'Currentky reading, After starting The Revisionists',
+  "Currently reading, After starting The Revisionists",
   homeLibrary.currentlyReading
 ); // should be The Revisionists book
