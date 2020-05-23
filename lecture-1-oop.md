@@ -123,11 +123,11 @@ class City {
   }
 }
 let montreal = new City(30000, "Montreal");
-let sanFransisco = new City(3, "San Fransisco");
+let sanFransisco = new City(3, "San Francisco");
 
 // What does the following output?
 console.log(montreal);
-console.log(sanFransisco);
+console.log(sanFrancisco);
 ```
 
 ---
