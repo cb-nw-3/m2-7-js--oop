@@ -1,6 +1,67 @@
 // From 2.3
 // Copy over all of the code from 2.3...
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
 
+class BookList {
+  constructor() {
+    this.books = [];
+    this.currentlyReading = null;
+    this.lastRead = null;
+  }
+
+  add = (book) => {
+    this.books.push(book);
+
+    if (this.currentlyReading === null) {
+      this.currentlyReading = book;
+    }
+  };
+
+
+  getNumRead = () => {
+    let numRead = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === true) {
+        numRead++;
+      }
+    });
+
+    return numRead;
+  };
+  getNumUnread = () => {
+    let numUnread = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === false) {
+        numUnread++;
+      }
+    });
+
+    return numUnread;
+  };
+
+  startReading = (title) => {
+    const book = this.books.find((book) => book.title === title);
+
+    this.currentlyReading = book;
+  };
+
+  finishReading = (title) => {
+    const book = this.books.find((book) => book.title === title);
+    this.lastRead = book;
+    this.currentlyReading = null;
+
+    book.isRead = true;
+  };
+
+
+}
 // Exercise 2.4
 /*
 
@@ -58,3 +119,4 @@ console.log(
   'Currentky reading, After starting The Revisionists',
   homeLibrary.currentlyReading
 ); // should be The Revisionists book
+
