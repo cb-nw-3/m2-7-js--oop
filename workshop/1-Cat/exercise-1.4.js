@@ -13,21 +13,26 @@
 // B) Make Boots wait 20 minutes and call then console.log(boots);
 
 class Cat {
-    constructor(initialTimer) {
+    constructor() {
         this.tiredness = 50;
         this.hunger = 50;
         this.loneliness = 50;
         this.happiness = 50;
-        this.timer = initialTimer * 100;
     }
-
-    // does this need an actual setInterval?
-    // I mean... why? Can't we just determine the number of iterations?
 
     updateValues = (timer) => {
         for (let i = 0; i < timer; i++) {
-
+            this.tiredness -= 1;
+            this.loneliness -= 2;
+            this.hunger -= 2;
         }
+        this.happiness = 100 - this.tiredness - this.loneliness - this.hunger;
     }
 
 }
+
+let boots = new Cat;
+
+boots.updateValues(20);
+
+console.log(boots);
