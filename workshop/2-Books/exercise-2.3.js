@@ -1,7 +1,48 @@
 // From 2.1. and 2.2
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
+class Book {
+  constructor(title, genre, author, isRead) {
+      this.title = title;
+      this.genre = genre;
+      this.author = author;
+      this.isRead = isRead || false ;
+  }
+}
 
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+
+  add = (book) => {
+    this.books.push(book);
+  };
+
+  getNumRead = () => {
+    let numBookRead = 0;
+
+    this.books.forEach((book) =>{
+      if (book.isRead){
+        numBookRead++;
+      }
+    });
+    return numBookRead;
+  }
+
+  getNumUnread = () => {
+    let numBookUnread = 0;
+
+    this.books.forEach((book) =>{
+      if (book.isRead === false){
+        numBookUnread++;
+      }
+    });
+    return numBookUnread;
+  }
+}
 // Exercise 2.3
 //
 // We want to be able to add books to our BookList, so that we can start a
@@ -31,8 +72,8 @@ homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
 // But, we can specify that we've read it:
 homeLibrary.add(
   new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
-);
-
-// At this point, we should have 2 unread books, and 1 read book:
+  );
+  
+  // At this point, we should have 2 unread books, and 1 read book:
 console.log(homeLibrary.getNumUnread()); // 2
 console.log(homeLibrary.getNumRead()); // 1

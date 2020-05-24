@@ -1,5 +1,53 @@
 // From 2.3
 // Copy over all of the code from 2.3...
+class Book {
+  constructor(title, genre, author, year, isRead) {
+      this.title = title;
+      this.genre = genre;
+      this.author = author;
+      this.year = year;
+      // this.yearOld = new Date().getFullYear() - this.year;
+      this.isRead = isRead || false ;
+  }
+}
+
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+
+  add = (book) => {
+    this.books.push(book);
+
+    if(this.currentlyReading === null){
+      this.currentlyReading = book.title;
+    }
+  };
+
+  // getAge = (year) => {
+  //   let yearsOld = new Date().getFullYear() - this.year;
+
+  //   this.year = `${this.title} is ${yearsOld} years old`;
+  // }
+
+  startReading = (title) => {
+    let reading = this.books.find((item) => item.title === title);
+
+    this.currentlyReading = reading;
+  }
+
+  finishReading = (title) => {
+    let bookFinished = this.books.find((item) => item.title === title);
+
+    this.lastRead = bookFinished;
+
+    this.currentlyReading = null;
+
+    bookFinished.isRead = true;
+  }
+}
 
 // Exercise 2.4
 /*
@@ -33,14 +81,14 @@ code runs well and produces the expected output.
 
 const homeLibrary = new BookList();
 
-homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
-homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King', 2015));
+homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman', 2018));
 homeLibrary.add(
-  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
+  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', 2019, true)
 );
-homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
+homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde', 2005));
 homeLibrary.add(
-  new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
+  new Book('The Revisionists', 'Science-fiction', 'thomas Mullen', 2002)
 );
 
 console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
