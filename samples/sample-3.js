@@ -8,7 +8,8 @@ class Student {
   };
 
   writeCode = () => {
-    learn();
+    this.learn();
+    console.log(this.excitement);
   };
 }
 

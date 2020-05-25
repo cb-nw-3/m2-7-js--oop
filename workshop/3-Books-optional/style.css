@@ -1,0 +1,161 @@
+html {
+  font-family: "Poppins";
+  text-align: center;
+}
+
+.bookRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  font-size: 1rem;
+}
+.bookItem {
+  text-align: center;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 6px #ddd;
+  margin: 30px;
+  width: 220px;
+}
+
+.cover {
+  border: 1px solid black;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 6px #ddd;
+  margin: 0 auto;
+  margin-top: 30px;
+  width: 100px;
+  height: 150px;
+}
+
+.read-lastread {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  min-height: 400px;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-shadow: 1px 1px 8px #888888;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+.subtitle {
+  margin-top: 10px;
+}
+
+.addBookForm {
+  display: none;
+}
+
+.showBookForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+
+  background-color: rgba(0, 0, 0, 0.247);
+}
+
+form {
+  background-color: white;
+  text-align: center;
+  border: 0;
+  border-radius: 8px;
+  box-shadow: 1px 1px 3px 2px #ddd;
+  width: 500px;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+.information-input {
+  padding-bottom: 50px;
+}
+
+label {
+  font-size: 1rem;
+  text-align: right;
+  width: 33%;
+}
+
+.input-pair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  margin-bottom: 10px;
+}
+
+.text-field {
+  width: 50%;
+  border-radius: 4px;
+  margin-left: 15px;
+  line-height: 30px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.terms {
+  margin: 0 auto;
+  margin-bottom: 30px;
+  padding: 15px;
+  background-color: #f2f2f2;
+  width: 80%;
+  border-radius: 4px;
+}
+
+.error-box {
+  margin: 0 auto;
+  background-color: hsla(333deg, 100%, 44%, 0.25);
+  padding: 15px;
+  width: 80%;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+}
+
+.btn-section {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.btn {
+  font-family: "Poppins";
+  font-weight: bold;
+  color: white;
+  font-size: 1rem;
+  padding: 15px 50px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+button {
+  margin-bottom: 10px;
+}
+
+.clear {
+  background-color: hsl(333deg, 100%, 44%);
+}
+
+.submit {
+  background-color: hsl(256deg, 100%, 44%);
+}
+
+.error-input-outline {
+  border: 4px solid hsla(333deg, 100%, 44%, 0.25);
+}
