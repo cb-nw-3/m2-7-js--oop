@@ -7,7 +7,7 @@
 
 class Cat {
   constructor(name, breed) {
-    this.species = 'cat';
+    this.species = "cat";
     this.breed = breed;
     this.name = name;
     this.tiredness = 50;
@@ -39,7 +39,7 @@ class Cat {
   };
 }
 
-const boots = new Cat('Boots', 'Siamese');
+const boots = new Cat("Boots", "Siamese");
 
 // B) Make Boots wait 20 minutes and call then console.log(boots);
 
