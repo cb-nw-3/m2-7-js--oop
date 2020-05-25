@@ -7,7 +7,7 @@ class Dog {
     this.eat();
   };
 
-  food = () => {
+  eat = () => {
     this.hunger = this.hunger - 10;
   };
 }
