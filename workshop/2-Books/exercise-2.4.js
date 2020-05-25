@@ -1,6 +1,104 @@
 // From 2.3
 // Copy over all of the code from 2.3...
 
+
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false; //is a bool, if not read then false
+  }
+}
+
+let book1 = new Book(
+  "Harry Potter and the Philosopher's Stone",
+  "Fantasy Adventure", 
+  "J.K Rowling",
+  true
+  )
+
+let book2 = new Book(
+  "Eragon",
+  "Fantasy", 
+  "Christopher Paolini",
+  true
+  )
+let book3 = new Book(
+  "1984",
+  "Dystopian Future", 
+  "George Orwell",
+  true
+  )
+let book4 = new Book(
+  "Oliver Twist",
+  "Serial novel",
+  "Charles Dickens", 
+  true
+  )
+let book5 = new Book(
+  "The Big Short: Inside the Doomsday Machine",
+  "non-fiction", 
+  "Michael Lewis",
+  )
+
+//console.log(book1, book2, book3, book4, book5);
+
+class BookList {
+  constructor() {
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+
+  add = (book) => {
+    this.books.push(book);
+
+    //when a book is added it will automatically be the book being currently read
+    if(!this.currentlyReading) {
+      this.currentlyReading = book;
+    }
+
+  }
+
+  //iterate over book array and check the isRead property
+  getNumRead = () => {
+    let count = 0;
+    this.books.forEach(book => {
+      if(book.isRead == true) {
+        count++;
+      }
+    })
+    return count;
+  }
+
+  //same as the above
+  getNumUnread = () => {
+    let count = 0;
+    this.books.forEach(book => {
+      if(book.isRead == false) {
+        count++;
+      }
+    })
+    return count;
+  }
+
+  startReading = (title) => {
+    //need to find the first book in the booklist array
+    let firstBook = this.books.find(item => item.title === title);
+    this.currentlyReading = firstBook;
+  }
+
+  finishReading = (title) => {
+    //lookup the title of the book in the booklist
+    let finishBook = this.books.find(item => item.title === title);
+    this.lastRead = finishBook;
+    finishBook.isRead = true; //the read prop is now true.
+    this.currentlyReading = null; // you are no longer reading any books.
+  }
+}
+
+
 // Exercise 2.4
 /*
 
@@ -42,6 +140,9 @@ homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
 homeLibrary.add(
   new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
 );
+
+//added the book
+console.log(homeLibrary);
 
 console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
 console.log('initial last-read', homeLibrary.lastRead); // should be null
