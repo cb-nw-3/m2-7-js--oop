@@ -15,11 +15,20 @@
 */
 
 class Cat {
-  // Add code here
-}
+  constructor() {
+    this.species = "cat";
+    this.tiredness = 0;
+    this.hunger = 0;
+    this.loneliness = 0;
+    this.happiness = 0;
+  }
+} // Add code here
 
 // B) Instantiate a cat called 'boots' with the Cat class.
-
+let boots = new Cat();
 // C) What do you see when you console.log(boots)?
-
+console.log(boots); //it only shows boots
 // D) What if I want to output just boots' species?
+
+console.log(boots.species);
+//this gives me the value of species which is cat

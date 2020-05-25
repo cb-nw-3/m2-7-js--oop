@@ -10,3 +10,5 @@ class Student {
 
 let bob = new Student();
 bob.writeCode();
+
+console.log(bob);
