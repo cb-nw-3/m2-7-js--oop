@@ -15,6 +15,44 @@
 //
 // Console.log them to verify that all is working.
 
-class Book {}
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    if (isRead === undefined || isRead === null) {
+      this.read = false;
+    } else {
+      this.read = isRead;
+    }
+  }
+}
+
+let book1 = new Book(
+  "Head First: JavaScript Programming",
+  "Computers",
+  "Freeman & Robson",
+  true
+);
+let book2 = new Book(
+  "HTML & CSS: Design and Build Websites",
+  "Computers",
+  "Jon Duckett",
+  true
+);
+let book3 = new Book(
+  "The Elements of Computing Systems",
+  "Computers",
+  "Nisan & Schocken",
+  false
+);
+let book4 = new Book("Code", "Computers", "Petzold");
+
+let book5 = new Book(
+  "Fullstack React Native",
+  "Computers",
+  "Abbott, Djirdeh, Accomazzo & Shoemaker",
+  false
+);
 
 console.log(book1, book2, book3, book4, book5);
