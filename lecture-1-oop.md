@@ -8,10 +8,18 @@ export const theme = mdxTheme;
 What does this program do?
 
 ```js
+//to convert
+// class Account {
+// constructor (initialSum) {
+//this.sum = initialSum;
+//}
+//}
 const createAcc = () => {
+  //() => same as empty function
   return { sum: 0 };
 };
 const inc = (item) => {
+  // parametre function
   item.sum = item.sum + 1;
 };
 
@@ -89,8 +97,8 @@ class Car {
   }
 }
 
-let myCar = new Car('Toyota');
-let yourCar = new Car('Honda');
+let myCar = new Car("Toyota");
+let yourCar = new Car("Honda");
 ```
 
 ---
@@ -114,12 +122,12 @@ class City {
     this.name = n;
   }
 }
-let montreal = new City(30000, 'Montreal');
-let sanFransisco = new City(3, 'San Fransisco');
+let montreal = new City(30000, "Montreal");
+let sanFransisco = new City(3, "San Francisco");
 
 // What does the following output?
 console.log(montreal);
-console.log(sanFransisco);
+console.log(sanFrancisco);
 ```
 
 ---
@@ -131,7 +139,8 @@ Every instance of a class has a property that matches the method name and refers
 
 ```js
 class Car {
-  noise = () => console.log('Vrooom');
+  constructor() {}
+  noise = () => console.log("Vrooom"); // method -> same as functions
 }
 
 let mazda = new Car();
@@ -148,10 +157,10 @@ class School {
   }
 
   noise = () => {
-    console.log('...The sound of students growing...');
+    console.log("...The sound of students growing...");
   };
 }
-let concordiaBootcamps = new School('Concordia Bootcamps');
+let concordiaBootcamps = new School("Concordia Bootcamps");
 
 // What does the following output?
 concordiaBootcamps.noise();
@@ -167,14 +176,14 @@ class Dog {
     this.voice = voice;
   }
   noise = () => {
-    console.log('woof');
+    console.log("woof");
   };
   coolOff = () => {
-    console.log('pant');
+    console.log("pant");
   };
 }
 
-let mastiff = new Dog();
+let mastiff = new Dog(); //give parameter to have acces to voice
 let terrier = new Dog();
 ```
 
@@ -196,12 +205,12 @@ class Dog {
     console.log(this.voice);
   };
   coolOff = () => {
-    console.log('pant ');
+    console.log("pant ");
   };
 }
 
-let mastiff = new Dog('WOOF!');
-let terrier = new Dog('yip!yip!');
+let mastiff = new Dog("WOOF!");
+let terrier = new Dog("yip!yip!");
 ```
 
 ---
@@ -227,7 +236,30 @@ myCar.drive();
 // 1. Given this class, how would we represent its hunger level?
 // 2. How could we represent varying hunger levels based on activity?
 // 3. How about when it eats?
-class Animal {}
+class Animal {
+  constructor(initialHunger) {
+    // 0 = full
+    // 100 = starving
+    this.hunger = initialHunger;
+  }
+  doSomething = (activityLevel) => {
+    this.hunger += activityLevel * 10;
+  };
+  goForAWalk = () => {
+    this.hunger += 10;
+  };
+  goToDogPark = () => {
+    this.hunger += 30;
+  };
+  haveASnack = () => {
+    this.hunger -= 20;
+  };
+}
+let spot = new Animal(50);
+spot.goForAWalk();
+spot.haveASnack();
+spot.goToDogPark();
+console.log(spot.hunger);
 ```
 
 ---
