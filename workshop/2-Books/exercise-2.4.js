@@ -1,60 +1,97 @@
 // From 2.3
-// Copy over all of the code from 2.3...
+// From 2.1. and 2.2
+// Copy over your solutions classes you created in 2.1 and 2.2.
+// Paste them right here:
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    this.isRead = isRead || false;
+  }
+}
 
-// Exercise 2.4
-/*
+class BookList {
+  constructor() {
+    //below are properties
+    this.books = [];
+    this.currentlyReading = null;
+    this.lastRead = null;
+  }
 
-In our BookList, we have properties to track:
-- The last book we've read
-- The book we're currently reading
-- The next book up
+  add = (book) => {
+    this.books.push(book);
 
-We're not using these properties yet; they're always null.
+    if (!this.currentlyReading) {
+      this.currentlyReading = book;
+    }
+  };
 
-Our new task is to make them functional. When we add our first book to the
-list, `currentlyReading` should get set to it.
+  getNumUnRead = () => {
+    let numUnread = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === false) {
+        numUnread++;
+      }
+    });
 
-We need two new methods:
+    return numUnread;
+  };
 
-- startReading
-- finishReading
+  getNumRead = () => {
+    let numRead = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === true) {
+        numRead++;
+      }
+    });
+    return numRead;
+  };
 
-Both of these methods will take a book title, as a string.
+  startReading = (title) => {
+    const book = this.books.find((book) => book.title === title);
 
-When we start reading a book, we should set the `currentlyReading` property
-to point to it.
+    this.currentlyReading = book;
+  };
 
-When we finish reading a book, we should set `currentlyReading` back to `null`,
-and set `lastRead` to the book we just finished.
+  finishReading = (title) => {
+    const book = this.books.find((book) => book.title === title);
+    this.lastRead = book;
+    this.currentlyReading = null;
 
-Your goal is to add the methods and behaviour necessary so that the following
-code runs well and produces the expected output.
-*/
+    book.isRead = true;
+  };
+}
 
+//Then instantiate it once as 'homeLibrary'
 const homeLibrary = new BookList();
 
-homeLibrary.add(new Book('The Shining', 'Horror', 'Stephen King'));
-homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
+// // Books are unread by default:
 homeLibrary.add(
-  new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
+  new Book("The Saint, the Surfer and the Ceo", "Enlightening", "Robin Sharma")
 );
-homeLibrary.add(new Book('The Eire Affair', 'Fantasy', 'Jasper Fforde'));
-homeLibrary.add(
-  new Book('The Revisionists', 'Science-fiction', 'thomas Mullen')
-);
+// // But, we can specify that we've read it:
+homeLibrary.add(new Book("Homo Deus", "Enlightening", "Yuval Noah Harari"));
+homeLibrary.add(new Book("Homo Sapiens", "Enlightening", "Yuval Noah Harari"));
+homeLibrary.add(new Book("Shoe Dog", "Biography", "Phil Knight"));
+homeLibrary.add(new Book("Steve Jobs", "Biography", "Walter Isaacson", true));
 
-console.log('initial state', homeLibrary.currentlyReading); // should be The Shining book object
-console.log('initial last-read', homeLibrary.lastRead); // should be null
+// console.log(homeLibrary.getNumRead());
 
-homeLibrary.finishReading('The Shining');
+// console.log(homeLibrary.getNumUnRead());
+
+console.log("initial state", homeLibrary.currentlyReading);
+console.log("initial last-read", homeLibrary.lastRead);
+
+homeLibrary.finishReading("Shoe Dog");
 console.log(
-  'Currently reading, after finishing The Shining',
+  "Currently reading, after finishing Homo Sapiens",
   homeLibrary.currentlyReading
 ); // should be null
-console.log('Last-read, after finishing The Shining', homeLibrary.lastRead); // should be The Shining
+console.log("Last-read, after finishing Steve Jobs", homeLibrary.lastRead); // should be The Shining
 
-homeLibrary.startReading('The Revisionists');
+homeLibrary.startReading("Homo Sapiens");
 console.log(
-  'Currentky reading, After starting The Revisionists',
+  "Currently reading, After starting Homo Deus",
   homeLibrary.currentlyReading
 ); // should be The Revisionists book

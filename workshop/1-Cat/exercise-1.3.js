@@ -9,6 +9,39 @@
 //    Write methods that will update tiredness, hunger, loneliness, and
 //    happiness.
 
+class Cat {
+  constructor(x, y) {
+    this.species = "cat";
+    this.style = "flashy";
+    this.loneliness = 0;
+    this.tiredness = 50;
+    this.hunger = 25;
+    this.happiness = 0;
+    this.color = "white";
+    this.breed = y;
+    this.name = x;
+  }
+  sleep = (hours) => {
+    this.tiredness -= hours * 5;
+    this.happiness += hours * 1;
+  };
+  eat = (kibblesserving) => {
+    this.hunger -= kibblesserving / 5;
+    this.happiness += kibblesserving / 10;
+  };
+  play = (minutes) => {
+    this.loneliness -= minutes * 5;
+    this.happiness += minutes * 3;
+  };
+}
+const boots = new Cat("Boots", "Siamese");
+
+boots.sleep(10);
+boots.eat(6);
+boots.play(60);
+
+console.log(boots);
+
 // HINT: You need to write arrow functions here. () => {}
 // - Write a sleep method that accept hours and reduces tiredness by 5 times
 //   that number. So if the cat has a tiredness of `50`, and sleeps for 10

@@ -8,7 +8,17 @@
 // Then instantiate it once as 'homeLibrary'
 
 // Console.log(homeLibrary) to verify that all is working.
+// Create a BookList class
 
 class BookList {
-  // Code here
+  constructor() {
+    //below are properties
+    this.books = [];
+    this.currentlyReading = null;
+    this.lastRead = null;
+  }
 }
+//Then instantiate it once as 'homeLibrary'
+const homeLibrary = new BookList();
+
+console.log(homeLibrary);
