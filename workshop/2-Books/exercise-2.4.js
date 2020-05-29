@@ -4,6 +4,8 @@
 // Exercise 2.4
 /*
 
+
+
 In our BookList, we have properties to track:
 - The last book we've read
 - The book we're currently reading
@@ -30,6 +32,63 @@ and set `lastRead` to the book we just finished.
 Your goal is to add the methods and behaviour necessary so that the following
 code runs well and produces the expected output.
 */
+
+class Book {
+  constructor(title, genre, author, isRead) {
+      this.title = title;
+      this.genre = genre;
+      this.author = author;
+      this.isRead = isRead  || false;
+  }
+
+  // isRead(){
+  //   return isRead;
+  // }
+}
+
+class BookList {
+  constructor(){
+    this.books = [];
+    this.lastRead = null;
+    this.currentlyReading = null;
+  }
+
+  add(book){
+    this.books.push(book);
+    if(this.books.length === 1){
+      this.currentlyReading = book;
+    }
+  }
+
+  getNumRead(){
+    let num = 0;
+    this.books.forEach((book) => {
+      if(book.isRead === true){
+        num++;
+      }
+    })
+  return num;
+  }
+
+  getNumUnread(){
+    return (this.books.length - this.getNumRead());
+  }
+
+  startReading(bookTitle){
+    const book = this.books.find((book) => book.title === bookTitle);
+    this.currentlyReading = book;
+  }
+
+  finishReading(bookTitle){
+    const book = this.books.find((book) => book.title === bookTitle);
+    this.lastRead = book;
+    this.currentlyReading = null;
+    book.isRead = true;
+  }
+}
+
+
+
 
 const homeLibrary = new BookList();
 
