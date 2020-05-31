@@ -2,6 +2,61 @@
 // Copy over your solutions classes you created in 2.1 and 2.2.
 // Paste them right here:
 
+
+// *** Exercise-2.1 ***
+class Book {
+  constructor(title, genre, author, isRead) {
+    this.title = title;
+    this.genre = genre;
+    this.author = author;
+    // If the book doesn't provide a value for `isRead`, it should default to `false`.
+    this.isRead = isRead || false;
+  }
+}
+
+// *** Exercise-2.2 ***
+// Create a `BookList` class that accept a few properties(books, lastRead, currentlyReading)
+class BookList {
+  constructor(books, lastRead, currentlyReading) {
+    this.books = []; // empty array
+    this.lastRead = null; // reference to last book read (null for now)
+    this.currentlyReading = null; // reference to current book (null for now)
+  }
+
+  // Create an `add` method in BookList class that take `book` as parameter
+  add = (book) => {
+    // When call `.add`, it should push new book into the `books` array on the `BookList` class
+    this.books.push(book);
+  }
+
+  // Creating two new methods to manage read state
+  // Get amount of book read
+  getNumRead = () => {
+    let numRead = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === true) {
+        numRead++;
+      }
+    });
+
+    return numRead;
+
+  };
+
+  // Get amount of book unread
+  getNumUnread = () => {
+    let numUnread = 0;
+    this.books.forEach((book) => {
+      if (book.isRead === false) {
+        numUnread++;
+      }
+    });
+
+    return numUnread;
+
+  };
+}
+
 // Exercise 2.3
 //
 // We want to be able to add books to our BookList, so that we can start a
@@ -11,7 +66,7 @@
 // as a parameter. When we call `.add`, it should push that new book into the
 // `books` array on the `BookList` class. Also, if no Book is being currently read
 // we should set currentlyReading to point to this newly added Book.
-//
+
 // Books have an `isRead` property, to indicate if we've read it or not.
 // Let's also add two new methods:
 // - getNumRead
@@ -32,6 +87,7 @@ homeLibrary.add(new Book('American Gods', 'Fiction', 'Neil Gaiman'));
 homeLibrary.add(
   new Book('Eloquent JavaScript', 'Programming', 'Marijn Haverbeke', true)
 );
+console.log(homeLibrary);
 
 // At this point, we should have 2 unread books, and 1 read book:
 console.log(homeLibrary.getNumUnread()); // 2
